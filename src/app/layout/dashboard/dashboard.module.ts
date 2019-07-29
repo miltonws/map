@@ -7,9 +7,11 @@ import { DashboardComponent } from './dashboard.component';
 import {
     TimelineComponent,
     NotificationComponent,
-    ChatComponent
+    ChatComponent,
+    MapComponent
 } from './components';
 import { StatModule } from '../../shared';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
     imports: [
@@ -17,13 +19,17 @@ import { StatModule } from '../../shared';
         NgbCarouselModule,
         NgbAlertModule,
         DashboardRoutingModule,
-        StatModule
+        StatModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyDCL8j_esC-CaEeY87Zf7oucR5o71MNUB8'
+        })
     ],
     declarations: [
         DashboardComponent,
         TimelineComponent,
         NotificationComponent,
-        ChatComponent
+        ChatComponent,
+        MapComponent
     ]
 })
 export class DashboardModule {}

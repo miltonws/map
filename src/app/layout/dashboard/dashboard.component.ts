@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { LocationService } from 'src/app/service/location.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -10,8 +11,9 @@ import { routerTransition } from '../../router.animations';
 export class DashboardComponent implements OnInit {
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
+    public pontos: Array<any> = [];
 
-    constructor() {
+    constructor(private location: LocationService) {
         this.sliders.push(
             {
                 imagePath: 'assets/images/slider1.jpg',
@@ -50,12 +52,24 @@ export class DashboardComponent implements OnInit {
                 voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum`
             }
         );
+
+
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.getLocation();
+    }
 
     public closeAlert(alert: any) {
         const index: number = this.alerts.indexOf(alert);
         this.alerts.splice(index, 1);
+    }
+
+    public getLocation() {
+        this.location.getLocalization().subscribe(
+            pontos => {
+            this.pontos = pontos
+            }
+        )
     }
 }

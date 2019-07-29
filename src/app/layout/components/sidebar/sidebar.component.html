@@ -2,20 +2,24 @@
     <div class="list-group">
         <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
-            <span>{{ 'Dashboard' | translate }}</span>
+            <span>{{ 'Administrador' | translate }}</span>
         </a>
         <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
-            <span>{{ 'Charts' | translate }}</span>
+            <!--<span>{{ 'Charts' | translate }}</span>-->
+            <span>{{ 'Grafico Ocorrencia' | translate }}</span>
         </a>
         <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-table"></i>&nbsp;
-            <span>{{ 'Tables' | translate }}</span>
+            <!--<span>{{ 'Tables' | translate }}</span>-->
+            <span>{{ 'Tabela de Ocorrencia' | translate }}</span>
         </a>
         <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-edit"></i>&nbsp;
+            <!--<span>{{ 'Forms' | translate }}</span>-->
             <span>{{ 'Forms' | translate }}</span>
         </a>
+        <!--INICIO menu desnecessario para escopo 
         <a [routerLink]="['/bs-element']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-desktop"></i>&nbsp;
             <span>{{ 'Bootstrap Element' | translate }}</span>
@@ -55,7 +59,10 @@
                     </li>
                 </ul>
             </li>
-        </div>
+        </div> 
+        FIM menu desnecessario-->
+
+        <!--INICIO botões link direto 
         <a [routerLink]="['/blank-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-file-o"></i>&nbsp;
             <span>{{ 'Blank Page' | translate }}</span>
@@ -64,7 +71,9 @@
             <i class="fa fa-caret-down"></i>&nbsp;
             <span>{{ 'More Themes' | translate }}</span>
         </a>
+        FIM botoes link direto-->
 
+        <!-- não sei bem ainda-->
         <div class="header-fields">
             <a (click)="rltAndLtr()" class="list-group-item">
                 <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>
@@ -146,6 +155,7 @@
     </div>
     <div class="toggle-button" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
         <i class="fa fa-fw fa-angle-double-{{collapsed?'right':'left'}}"></i>&nbsp;
-        <span>{{ 'Collapse Sidebar' | translate }}</span>
+        <!--<span>{{ 'Collapse Sidebar' | translate }}</span>-->
+        <span>{{ 'Recolher Menu ' | translate }}</span>
     </div>
 </nav>

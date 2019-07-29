@@ -4,29 +4,33 @@
         <div class="col col-sm-6">
             <div class="card mb-3">
                 <div class="card-header">
-                    Bar Chart
+                   Ocorrencia Por Data
                 </div>
                 <div class="card-body">
                     <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
                     </canvas>
                 </div>
+                <!-- BOTAO
                 <div class="card-footer">
                     <button class="btn btn-info btn-sm" (click)="randomize()">Update</button>
                 </div>
+                -->
             </div>
         </div>
         <div class="col col-sm-6">
             <div class="card mb-3">
                 <div class="card-header">
-                    Doughnut Chart
+                    Ocorrencia Por Idade
                 </div>
                 <div class="card-body">
-                    <canvas baseChart height="180px" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+                    <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
                     </canvas>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- --------------------------INICIO ----------------- 
     <div class="row">
         <div class="col col-sm-6">
             <div class="card mb-3">
@@ -40,15 +44,15 @@
             </div>
         </div>
         <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Pie Chart
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Doughnut Chart
+                    </div>
+                    <div class="card-body">
+                        <canvas baseChart height="180px" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+                        </canvas>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
         </div>
     </div>
     <div class="row">
@@ -75,4 +79,5 @@
             </div>
         </div>
     </div>
+     --------------------------FIM----------------------- -->
 </div>
