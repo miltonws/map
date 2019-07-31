@@ -1,24 +1,25 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
     <div class="list-group">
         <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
-            <span>{{ 'Administrador' | translate }}</span>
+            <i class="fa fa-fw fa-map"></i>&nbsp;
+            <span>{{ 'Mapa de Ocorrência' | translate }}</span>
         </a>
         <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
             <!--<span>{{ 'Charts' | translate }}</span>-->
-            <span>{{ 'Grafico Ocorrencia' | translate }}</span>
+            <span>{{ 'Gráfico de Ocorrência' | translate }}</span>
         </a>
         <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-table"></i>&nbsp;
             <!--<span>{{ 'Tables' | translate }}</span>-->
-            <span>{{ 'Tabela de Ocorrencia' | translate }}</span>
+            <span>{{ 'Tabela de Ocorrência' | translate }}</span>
         </a>
+        <!-- 
         <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-edit"></i>&nbsp;
-            <!--<span>{{ 'Forms' | translate }}</span>-->
+            <!--<span>{{ 'Forms' | translate }}</span>
             <span>{{ 'Forms' | translate }}</span>
-        </a>
+        </a>-->
         <!--INICIO menu desnecessario para escopo 
         <a [routerLink]="['/bs-element']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-desktop"></i>&nbsp;

@@ -11,6 +11,7 @@ export class MapComponent implements OnInit, OnChanges{
   @Input() set pontos(value) {
     this.pontosLocalizacao = value;
   };
+  
   title: string = 'My first AGM project';
   lat: number = -8.0597277;
   lng: number = -34.8724749;

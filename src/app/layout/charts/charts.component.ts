@@ -26,8 +26,8 @@ export class ChartsComponent implements OnInit {
     public barChartLegend: boolean;
 
     public barChartData: any[] = [
-        { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-        { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
+        { data: [65, 59, 80, 81, 56, 55, 40], label: 'Atendidas' },
+        { data: [28, 48, 40, 19, 86, 27, 90], label: 'Não Atendidades' }
     ];
 
     // Doughnut
@@ -57,9 +57,9 @@ export class ChartsComponent implements OnInit {
 
     // Pie
     public pieChartLabels: string[] = [
-        'Download Sales',
-        'In-Store Sales',
-        'Mail Sales'
+        'Menores de 18',
+        'Maiores de 18 e Menores de 50',
+        'Maior de 50 anos'
     ];
     public pieChartData: number[] = [300, 500, 100];
     public pieChartType: string;
