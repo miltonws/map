@@ -10,10 +10,25 @@ export class LocationService {
       private http: HttpClient
   ) { }
 
+  //servico de ajuda
   public getLocalization() {
       return this.http.get<Object[]>(
-          "http://ec2-18-222-248-86.us-east-2.compute.amazonaws.com:3003/api/locationDevices"
+          "http://18.228.6.134:3003/api/helpdevices"
       )
+  }
+
+  //servico historico de ajuda
+  public getHistoryLocalization() {
+      return this.http.get<Object[]>(
+          "http://18.228.6.134:3003/api/locationdevices"
+      )
+  }
+
+
+  public getUsers() {
+    return this.http.get<Object[]>(
+        "http://18.228.6.134:3003/api/userdevices"
+    )
   }
 
 }

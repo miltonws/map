@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { LocationService } from 'src/app/service/location.service';
 
 @Component({
     selector: 'app-charts',
@@ -8,19 +9,21 @@ import { routerTransition } from '../../router.animations';
     animations: [routerTransition()]
 })
 export class ChartsComponent implements OnInit {
+
+    public helps: any[];
+    public mes: any[];
+    public qTAjudaMes: any[];
+    public contConfirmado = 0;
+    public contNaoConfirmado = 0;
+
     // bar chart
     public barChartOptions: any = {
         scaleShowVerticalLines: false,
         responsive: true
     };
     public barChartLabels: string[] = [
-        '2006',
-        '2007',
-        '2008',
-        '2009',
-        '2010',
-        '2011',
-        '2012'
+        '08',
+
     ];
     public barChartType: string;
     public barChartLegend: boolean;
@@ -158,7 +161,7 @@ export class ChartsComponent implements OnInit {
          */
     }
 
-    constructor() {}
+    constructor(private location: LocationService) {}
 
     ngOnInit() {
         this.barChartType = 'bar';
@@ -170,5 +173,25 @@ export class ChartsComponent implements OnInit {
         this.polarAreaChartType = 'polarArea';
         this.lineChartLegend = true;
         this.lineChartType = 'line';
+        this.getLocationHelp();
+    }
+
+
+    public getLocationHelp() {
+        this.location.getLocalization().subscribe(
+            helps => {
+                this.helps = helps
+                this.helps.forEach(ajuda => {
+                    //this.mes = ajuda.
+                    if(ajuda.snConfirma == null){
+                        this.contNaoConfirmado++;
+                    }else{
+                        this.contConfirmado++;
+                    }
+                });
+
+                console.log(" ajuda :" ,helps);
+            }
+        )
     }
 }

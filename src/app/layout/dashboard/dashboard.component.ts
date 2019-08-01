@@ -66,9 +66,10 @@ export class DashboardComponent implements OnInit {
     }
 
     public getLocation() {
-        this.location.getLocalization().subscribe(
+        this.location.getHistoryLocalization().subscribe(
             pontos => {
             this.pontos = pontos
+                console.log("dashboard: ", this.pontos);
             }
         )
     }

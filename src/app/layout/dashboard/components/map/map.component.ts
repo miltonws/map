@@ -8,6 +8,7 @@ import { Component, Input, OnInit, OnChanges } from '@angular/core';
 export class MapComponent implements OnInit, OnChanges{
   
   public pontosLocalizacao; 
+
   @Input() set pontos(value) {
     this.pontosLocalizacao = value;
   };

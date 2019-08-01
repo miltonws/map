@@ -12,6 +12,7 @@ import {
 } from './components';
 import { StatModule } from '../../shared';
 import { AgmCoreModule } from '@agm/core';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { AgmCoreModule } from '@agm/core';
         StatModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyDCL8j_esC-CaEeY87Zf7oucR5o71MNUB8'
-        })
+        }),
+        AgmJsMarkerClustererModule
     ],
     declarations: [
         DashboardComponent,
