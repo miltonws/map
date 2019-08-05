@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { LocationService } from 'src/app/service/location.service';
+import { collectExternalReferences } from '@angular/compiler';
 
 @Component({
     selector: 'app-charts',
@@ -10,28 +11,38 @@ import { LocationService } from 'src/app/service/location.service';
 })
 export class ChartsComponent implements OnInit {
 
+    public mesAtual: string;
     public helps: any[];
+    public users: any[];
     public mes: any[];
     public qTAjudaMes: any[];
     public contConfirmado = 0;
     public contNaoConfirmado = 0;
+    public contadorMenorIdade = 0;
+    public contadorAdultoIdade = 0;
+    public contadorTerceiraIdade = 0;
+    public contadorTotalOcorrencia = 0;
 
     // bar chart
     public barChartOptions: any = {
-        scaleShowVerticalLines: false,
+        scaleShowVerticalLines: true,
         responsive: true
     };
     public barChartLabels: string[] = [
         '08',
-
     ];
+
     public barChartType: string;
     public barChartLegend: boolean;
 
     public barChartData: any[] = [
-        { data: [65, 59, 80, 81, 56, 55, 40], label: 'Atendidas' },
-        { data: [28, 48, 40, 19, 86, 27, 90], label: 'Não Atendidades' }
+        { data: [10, 59, 80, 81, 56, 55, 40], label: 'Confirmadas' },
+        { data: [10, 48, 40, 19, 86, 27, 90], label: 'Não Confirmadas' }
     ];
+//    public barChartData: any[] = [
+//        { data: [65, 59, 80, 81, 56, 55, 40], label: 'Atendidas' },
+//        { data: [28, 48, 40, 19, 86, 27, 90], label: 'Não Atendidades' }
+//    ];
 
     // Doughnut
     public doughnutChartLabels: string[] = [
@@ -174,22 +185,71 @@ export class ChartsComponent implements OnInit {
         this.lineChartLegend = true;
         this.lineChartType = 'line';
         this.getLocationHelp();
+        this.getUSers();
     }
 
+    public getUSers() {
+        this.location.getUsers().subscribe(
+            users => {
+                this.users = users;
+                var i = 0;
+                for(var keyHelp in this.helps){
+                    var helpUSerId = this.helps[keyHelp].userDeviceId;
+                    for(var keyUser in this.users){
+                        var userID = this.users[keyUser]._id                     
+                        if(helpUSerId === userID){
+                            var date = new Date();
+                            var dataNascimento = this.users[keyUser].dataNascimento;
+                            var anoN = dataNascimento.substring(0, 4);
+                            var idade = date.getFullYear() - anoN;
+                            if(idade < 18){
+                                this.contadorMenorIdade++;
+                            }else if( idade >= 18 && idade <= 50){
+                                this.contadorAdultoIdade++;
+                            }else{
+                                this.contadorTerceiraIdade++;
+                            }
+                        }
+                    }
+                }
+                this.pieChartData[0] = this.contadorMenorIdade;
+                this.pieChartData[1] = this.contadorAdultoIdade;
+                this.pieChartData[2] = this.contadorTerceiraIdade;
+            }
+        )
+    }
 
     public getLocationHelp() {
         this.location.getLocalization().subscribe(
             helps => {
+                var i = 0;
                 this.helps = helps
                 this.helps.forEach(ajuda => {
-                    //this.mes = ajuda.
-                    if(ajuda.snConfirma == null){
+                    this.mesAtual = ajuda.dataTimeHelp;
+                    var mesf = this.mesAtual.substring(5, 7)
+                    //var teste = this.mes.indexOf(mesf) === -1;
+                    //console.log("teste: ", teste);
+                    if(ajuda.snConfirma == ''){
                         this.contNaoConfirmado++;
                     }else{
                         this.contConfirmado++;
                     }
                 });
 
+                for (var key in this.barChartData) {
+                    console.log("key " + key + " has value " + this.barChartData[key]); 
+                    if(i == 0){
+                        console.log("Quantidade confirmado: ", this.barChartData[key].data = [this.contConfirmado]);
+                    }else{
+                        console.log("Quantidade não confirmado: ", this.barChartData[key].data = [this.contNaoConfirmado]);
+                    }
+                    console.log(this.barChartData[key].label);
+                    i++;
+                }
+               
+                console.log("array mes: ", this.mes);
+                console.log("S",this.contConfirmado);
+                console.log("N",this.contNaoConfirmado);
                 console.log(" ajuda :" ,helps);
             }
         )
